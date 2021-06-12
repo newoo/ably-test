@@ -1,0 +1,109 @@
+
+{
+  "banners": [
+    {
+      "id": 1,
+      "image": "https://img.a-bly.com/banner/images/banner_image_1615465448476691.jpg"
+    },
+    {
+      "id": 2,
+      "image": "https://img.a-bly.com/banner/images/banner_image_1615970086333899.jpg"
+    },
+    {
+      "id": 3,
+      "image": "https://img.a-bly.com/banner/images/banner_image_1615962899391279.jpg"
+    }
+  ],
+  "goods": [
+    {
+      "actual_price": 18000,
+      "id": 1,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210122_1611290798811044s.jpg",
+      "is_new": false,
+      "name": "[선물포장/별자리각인] 집들이 선물 원목 별자리 인센스 스틱 홀더 3type 호두나무 참나무 단풍나무 인테리어소품 감성소품 캠핑용품",
+      "price": 16000,
+      "sell_count": 61
+    },
+    {
+      "actual_price": 34000,
+      "id": 2,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210225_1614264987060340s.gif",
+      "is_new": false,
+      "name": "[당일출고]왕박시핏! 스트링 야상 자켓;2col",
+      "price": 34000,
+      "sell_count": 58
+    },
+    {
+      "actual_price": 35600,
+      "id": 3,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210305_1614930254984142s.gif",
+      "is_new": true,
+      "name": "[세트할인!]인기상품~벨치스 포켓 후드집업 + 피얼즈 골지스판 뷔스티에 원피스 세트상품",
+      "price": 33900,
+      "sell_count": 61
+    },
+    {
+      "actual_price": 38000,
+      "id": 4,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210211_1613026474459090s.gif",
+      "is_new": true,
+      "name": "[SET] 환생, 후드집업 + 트레이닝 팬츠 투피스 / 강추",
+      "price": 34000,
+      "sell_count": 4044
+    },
+    {
+      "actual_price": 23000,
+      "id": 5,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20201015_1602759623544509s.jpg",
+      "is_new": false,
+      "name": "[12종]레터링케이크캔들+생일머리띠",
+      "price": 19900,
+      "sell_count": 977
+    },
+    {
+      "actual_price": 78000,
+      "id": 6,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210202_1612231126114813s.gif",
+      "is_new": true,
+      "name": "mjk077 호웰 셋업 자켓",
+      "price": 65000,
+      "sell_count": 8
+    },
+    {
+      "actual_price": 24000,
+      "id": 7,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210226_1614308587349292s.jpg",
+      "is_new": true,
+      "name": "[OUTER] PERON GOLGI WAVE V NECK CARDIGAN",
+      "price": 24000,
+      "sell_count": 3317
+    },
+    {
+      "actual_price": 50000,
+      "id": 8,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210312_1615536945556018s.gif",
+      "is_new": false,
+      "name": "상품8",
+      "price": 45000,
+      "sell_count": 61
+    },
+    {
+      "actual_price": 59900,
+      "id": 9,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210201_1612166334342099s.jpg",
+      "is_new": true,
+      "name": "숏 트러커 MIWJJA90PC",
+      "price": 29900,
+      "sell_count": 5
+    },
+    {
+      "actual_price": 13320,
+      "id": 10,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210329_1616982639402177s.gif",
+      "is_new": true,
+      "name": "[오늘핫딜]여름까지쭉~! 루즈핏 슬라브 얇은 크롭 가디건(4color)",
+      "price": 13320,
+      "sell_count": 78
+    }
+  ]
+}
