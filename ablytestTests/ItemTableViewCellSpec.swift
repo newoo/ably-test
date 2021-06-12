@@ -33,7 +33,7 @@ class ItemTableViewCellSpec: QuickSpec {
         }
         
         it ("renders item image") {
-          expect(imageView.backgroundColor == .blue).to(beTrue())
+          expect(imageView.image).toNotEventually(beNil())
         }
         
         it("renders price") {

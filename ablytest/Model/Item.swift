@@ -23,7 +23,11 @@ struct Item: Decodable {
   }
   
   var sellCountText: String {
-    sellCount.decimalText + "개 구매중"
+    sellCount >= 10 ? sellCount.decimalText + "개 구매중" : ""
+  }
+  
+  var actualImagePath: String? {
+    image.components(separatedBy: "GOODS_THUMB_WEBP/").last
   }
   
   enum CodingKeys: String, CodingKey {

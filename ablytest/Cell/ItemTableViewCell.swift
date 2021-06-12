@@ -124,10 +124,9 @@ class ItemTableViewCell: UITableViewCell {
   }
   
   private func bind() {
-    itemInput.compactMap {
-      $0.image.components(separatedBy: "GOODS_THUMB_WEBP/").last
-    }.bind(to: thumbnailImageView.rx.imageURL)
-    .disposed(by: disposeBag)
+    itemInput.compactMap { $0.actualImagePath }
+      .bind(to: thumbnailImageView.rx.imageURL)
+      .disposed(by: disposeBag)
     
     itemInput.map { $0.discountText }
       .do(onNext: { [weak self] in
