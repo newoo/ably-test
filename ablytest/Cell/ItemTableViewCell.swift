@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import SDWebImage
 
 class ItemTableViewCell: UITableViewCell {
   static let identifier = "ItemTableViewCell"
@@ -15,6 +16,7 @@ class ItemTableViewCell: UITableViewCell {
   private let thumbnailImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.layer.cornerRadius = 4
+    imageView.layer.masksToBounds = true
     
     return imageView
   }()
@@ -77,8 +79,7 @@ class ItemTableViewCell: UITableViewCell {
       arrangedSubviews: [priceStackView, nameLabel, statusStackView])
     
     super.init(style: style, reuseIdentifier: ItemTableViewCell.identifier)
-    
-    thumbnailImageView.backgroundColor = .blue
+    selectionStyle = .none
     setStackView()
     setConstraints()
     bind()
@@ -123,11 +124,15 @@ class ItemTableViewCell: UITableViewCell {
   }
   
   private func bind() {
+    itemInput.compactMap {
+      $0.image.components(separatedBy: "GOODS_THUMB_WEBP/").last
+    }.bind(to: thumbnailImageView.rx.imageURL)
+    .disposed(by: disposeBag)
+    
     itemInput.map { $0.discountText }
       .do(onNext: { [weak self] in
         self?.priceStackView.spacing = $0.count > 0 ? 5 : 0
-      })
-      .observeOn(MainScheduler.instance)
+      }).observeOn(MainScheduler.instance)
       .bind(to: discountLabel.rx.text)
       .disposed(by: disposeBag)
     
@@ -149,8 +154,7 @@ class ItemTableViewCell: UITableViewCell {
     itemInput.map { $0.isNew }
       .do(onNext: { [weak self] in
         self?.statusStackView.spacing = $0 ? 5 : 0
-      })
-      .map { !$0 }
+      }).map { !$0 }
       .observeOn(MainScheduler.instance)
       .bind(to: newTagImageView.rx.isHidden)
       .disposed(by: disposeBag)

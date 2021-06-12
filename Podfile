@@ -13,6 +13,7 @@ target 'ablytest' do
   pod 'Alamofire', '~> 5.4'
   pod 'Moya/RxSwift', '~> 14.0'
   pod 'MoyaSugar', '~> 1.3.3'
+  pod 'SDWebImage', '~> 5.0'
 
   target 'ablytestTests' do
     inherit! :search_paths
