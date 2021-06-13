@@ -5,7 +5,7 @@
 //  Created by Taeheon Woo on 2021/06/12.
 //
 
-struct Item: Decodable {
+struct Item: Codable {
   let id: UInt
   let name: String
   let image: String
@@ -13,6 +13,8 @@ struct Item: Decodable {
   let price: UInt
   let isNew: Bool
   let sellCount: UInt
+  
+  var isLiked = false
   
   var discount: UInt {
     100 - (price * 100 / actualPrice)
@@ -35,5 +37,9 @@ struct Item: Decodable {
     case actualPrice = "actual_price"
     case isNew = "is_new"
     case sellCount = "sell_count"
+  }
+  
+  mutating func setLike(to isLiked: Bool) {
+    self.isLiked = isLiked
   }
 }

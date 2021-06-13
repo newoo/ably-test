@@ -23,6 +23,14 @@ final class HomeViewReactor: Reactor {
   struct State {
     var items = [Item]()
     var isLoading = false
+    var likedItems : [UInt] = {
+      guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
+            let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
+        return []
+      }
+      
+      return likeditems.map { $0.id }
+    }()
   }
   
   let initialState = State()
@@ -41,6 +49,17 @@ final class HomeViewReactor: Reactor {
       let setItems = networking.request(.home)
         .asObservable()
         .map { $0.goods }
+        .map { [weak self] items in
+          return items.map { item in
+            if self?.currentState.likedItems.contains(where: { $0 == item.id }) == true {
+              var item = item
+              item.setLike(to: true)
+              return item
+            }
+            
+            return item
+          }
+        }
         .map { Mutation.setItems($0) }
       
       return .concat([.just(.setLoading(true)),

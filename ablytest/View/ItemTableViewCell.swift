@@ -21,6 +21,8 @@ class ItemTableViewCell: UITableViewCell {
     return imageView
   }()
   
+  private let likeButton: LikeButton
+  
   private let discountLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
@@ -72,6 +74,7 @@ class ItemTableViewCell: UITableViewCell {
   var disposeBag = DisposeBag()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    likeButton = LikeButton()
     priceStackView = UIStackView(arrangedSubviews: [discountLabel, priceLabel])
     statusStackView = UIStackView(
       arrangedSubviews: [newTagImageView, sellCountLabel])
@@ -98,6 +101,12 @@ class ItemTableViewCell: UITableViewCell {
       $0.width.height.equalTo(80)
     }
     
+    likeButton.snp.makeConstraints {
+      $0.top.equalTo(thumbnailImageView.snp.top).offset(8)
+      $0.trailing.equalTo(thumbnailImageView.snp.trailing).offset(-8)
+      $0.width.height.equalTo(24)
+    }
+    
     verticalStackView.snp.makeConstraints {
       $0.leading.equalTo(thumbnailImageView.snp.trailing).offset(12)
       $0.top.bottom.equalToSuperview().inset(24)
@@ -106,8 +115,9 @@ class ItemTableViewCell: UITableViewCell {
   }
   
   private func addSubviews() {
-    self.addSubview(thumbnailImageView)
-    self.addSubview(verticalStackView)
+    contentView.addSubview(thumbnailImageView)
+    contentView.addSubview(likeButton)
+    contentView.addSubview(verticalStackView)
   }
   
   private func setStackView() {
@@ -125,7 +135,15 @@ class ItemTableViewCell: UITableViewCell {
   
   private func bind() {
     itemInput.compactMap { $0.actualImagePath }
+      .observeOn(MainScheduler.instance)
       .bind(to: thumbnailImageView.rx.imageURL)
+      .disposed(by: disposeBag)
+    
+    itemInput.compactMap { $0.isLiked }
+      .observeOn(MainScheduler.instance)
+      .subscribe(onNext: { [weak self] in
+        self?.likeButton.setLike(to: $0)
+      })
       .disposed(by: disposeBag)
     
     itemInput.map { $0.discountText }
@@ -157,5 +175,44 @@ class ItemTableViewCell: UITableViewCell {
       .observeOn(MainScheduler.instance)
       .bind(to: newTagImageView.rx.isHidden)
       .disposed(by: disposeBag)
+    
+    Observable.combineLatest(
+      likeButton.rx.tap.asObservable(),
+      itemInput,
+      resultSelector: {
+        return $1
+      }).subscribe(onNext: { [weak self] item in
+        var likedItems = self?.getLikedItems() ?? []
+        likedItems = self?.adjustLikedItems(likedItems, with: item) ?? []
+        self?.setLikedItems(likedItems)
+      }).disposed(by: disposeBag)
+  }
+  
+  private func getLikedItems() -> [Item] {
+    guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
+       let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
+      return []
+    }
+     
+    return likeditems
+  }
+  
+  private func setLikedItems(_ items: [Item]) {
+    UserDefaults.standard.set(try? PropertyListEncoder().encode(items), forKey: "likes")
+    UserDefaults.standard.synchronize()
+  }
+  
+  private func adjustLikedItems(_ items: [Item], with item: Item) -> [Item] {
+    guard likeButton.isLiked else {
+      return items.filter { $0.id != item.id }
+    }
+    
+    var items = items
+    
+    if !(items.contains { $0.id == item.id }) {
+      items.append(item)
+    }
+    
+    return items
   }
 }

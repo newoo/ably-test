@@ -21,6 +21,7 @@
 		3209CD3E2674B039000FBF89 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD3D2674B039000FBF89 /* Color.swift */; };
 		3209CD402674C4B8000FBF89 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD3F2674C4B8000FBF89 /* UIImageView+Extension.swift */; };
 		3209CD442674FFD3000FBF89 /* GoodsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3209CD432674FFD3000FBF89 /* GoodsResponse.json */; };
+		3209CD462675BCC8000FBF89 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD452675BCC8000FBF89 /* LikeButton.swift */; };
 		321162B6267431440047256C /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B5267431440047256C /* ItemTableViewCell.swift */; };
 		321162B82674405C0047256C /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B72674405C0047256C /* HomeViewControllerSpec.swift */; };
 		321162BA267445050047256C /* ItemTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B9267445050047256C /* ItemTableViewCellSpec.swift */; };
@@ -66,6 +67,7 @@
 		3209CD3D2674B039000FBF89 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3209CD3F2674C4B8000FBF89 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		3209CD432674FFD3000FBF89 /* GoodsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoodsResponse.json; sourceTree = "<group>"; };
+		3209CD452675BCC8000FBF89 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		321162B5267431440047256C /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		321162B72674405C0047256C /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
 		321162B9267445050047256C /* ItemTableViewCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellSpec.swift; sourceTree = "<group>"; };
@@ -134,12 +136,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		3209CD382674AE38000FBF89 /* Cell */ = {
+		3209CD382674AE38000FBF89 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				321162B5267431440047256C /* ItemTableViewCell.swift */,
+				3209CD452675BCC8000FBF89 /* LikeButton.swift */,
 			);
-			path = Cell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		3209CD392674AE47000FBF89 /* Model */ = {
@@ -209,7 +212,7 @@
 			children = (
 				3209CD3C2674AE96000FBF89 /* Resource */,
 				3209CD3B2674AE80000FBF89 /* Extension */,
-				3209CD382674AE38000FBF89 /* Cell */,
+				3209CD382674AE38000FBF89 /* View */,
 				3209CD3A2674AE66000FBF89 /* Network */,
 				3209CD392674AE47000FBF89 /* Model */,
 				3209CD372674AE1B000FBF89 /* ViewController */,
@@ -478,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3209CD462675BCC8000FBF89 /* LikeButton.swift in Sources */,
 				321162B6267431440047256C /* ItemTableViewCell.swift in Sources */,
 				3209CD29267470BF000FBF89 /* Networking.swift in Sources */,
 				3209CD3E2674B039000FBF89 /* Color.swift in Sources */,

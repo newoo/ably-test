@@ -66,8 +66,7 @@ class HomeViewController: UIViewController, View {
       .map { $0.items }
       .do(onNext: { [weak self] _ in
         self?.stopPaging()
-      })
-      .bind(to: tableView.rx.items(
+      }).bind(to: tableView.rx.items(
         cellIdentifier: ItemTableViewCell.identifier,
         cellType: ItemTableViewCell.self
       )) { _, item, cell in
@@ -124,7 +123,7 @@ class HomeViewController: UIViewController, View {
     footerView.addSubview(spinner)
     
     spinner.startAnimating()
-
+    
     return footerView
   }
 }
