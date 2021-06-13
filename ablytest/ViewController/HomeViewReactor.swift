@@ -12,6 +12,7 @@ import Moya
 final class HomeViewReactor: Reactor {
   enum Action {
     case enter
+    case loadMore
   }
   
   enum Mutation {
@@ -45,6 +46,17 @@ final class HomeViewReactor: Reactor {
       return .concat([.just(.setLoading(true)),
                       setItems,
                       .just(.setLoading(false))])
+      
+    case .loadMore:
+      let lastId = currentState.items.last?.id
+      let setItems = networking.request(.goods(lastId))
+        .asObservable()
+        .map { $0.goods }
+        .map { Mutation.setItems($0) }
+      
+      return .concat([.just(.setLoading(true)),
+                      setItems,
+                      .just(.setLoading(false))])
     }
   }
   
@@ -56,7 +68,7 @@ final class HomeViewReactor: Reactor {
       state.isLoading = isLoading
       
     case let .setItems(items):
-      state.items = items
+      state.items = state.items + items
     }
     
     return state

@@ -1,0 +1,95 @@
+
+{
+  "goods": [
+    {
+      "actual_price": 21800,
+      "id": 11,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210208_1612714814136335s.gif",
+      "is_new": false,
+      "name": "[허리잘록! 핏보장] 꾸안꾸 크롭 퍼프 후드집업 [3color]",
+      "price": 21800,
+      "sell_count": 5922
+    },
+    {
+      "actual_price": 9900,
+      "id": 12,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210306_1615019053667615s.jpg",
+      "is_new": true,
+      "name": "💛신제품2탄💛강아지 그림 목걸이 인식표 하네스 고양이",
+      "price": 9900,
+      "sell_count": 20
+    },
+    {
+      "actual_price": 13900,
+      "id": 13,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210321_1616296985388256s.jpg",
+      "is_new": true,
+      "name": "💛1+1 봄행사💛 [한정 특가] 이니셜 하트 목걸이 커플 우정 써지컬",
+      "price": 13900,
+      "sell_count": 5
+    },
+    {
+      "actual_price": 18500,
+      "id": 14,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210224_1614171683184671s.gif",
+      "is_new": true,
+      "name": "🍭!!1차완판!! [나만의 각인] 🌳친환경 고용량 473ml! 냉온겸용 리유저블 각인 텀블러 2차판매 시작!",
+      "price": 15500,
+      "sell_count": 876
+    },
+    {
+      "actual_price": 25000,
+      "id": 15,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210302_1614692952120202s.jpg",
+      "is_new": false,
+      "name": "❤️3일 SALE❤️드로잉 무드등+엽서  /생일,기념일,결혼,축하선물",
+      "price": 19000,
+      "sell_count": 132
+    },
+    {
+      "actual_price": 12900,
+      "id": 16,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210102_1609573201328555s.jpg",
+      "is_new": true,
+      "name": "비누장미 블랙로즈 흑장미 검정장미 목화솜 미니 졸업식 발렌타인 남친 여친 꽃다발",
+      "price": 12900,
+      "sell_count": 294
+    },
+    {
+      "actual_price": 49000,
+      "id": 17,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210323_1616474520128131s.jpg",
+      "is_new": false,
+      "name": "[자체제작][누적10,000장돌파]보브 싱글자켓",
+      "price": 31500,
+      "sell_count": 633
+    },
+    {
+      "actual_price": 19900,
+      "id": 18,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210201_1612166779363175s.jpg",
+      "is_new": true,
+      "name": "베이직 라운드 가디건 MIWCKA920T",
+      "price": 10000,
+      "sell_count": 173
+    },
+    {
+      "actual_price": 50000,
+      "id": 19,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210309_1615299162931500s.jpg",
+      "is_new": false,
+      "name": "🍒 드로잉 폰케이스 / 레터링케이스 / 포토케이스 주문제작 생일선물 추천 🍒",
+      "price": 45000,
+      "sell_count": 61
+    },
+    {
+      "actual_price": 45720,
+      "id": 20,
+      "image": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_THUMB_WEBP/https://imgb.a-bly.com/data/goods/20210221_1613914540571180s.gif",
+      "is_new": true,
+      "name": "(백화점퀄 핏예쁜) 메이비 투버튼 소매트임 숏 자켓",
+      "price": 36400,
+      "sell_count": 234
+    }
+  ]
+}

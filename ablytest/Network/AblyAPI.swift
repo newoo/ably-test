@@ -10,6 +10,7 @@ import MoyaSugar
 
 enum AblyAPI: SugarTargetType {
   case home
+  case goods(UInt? = nil)
   
   var baseURL: URL {
     return URL(string: "http://d2bab9i9pr8lds.cloudfront.net/api")!
@@ -19,11 +20,20 @@ enum AblyAPI: SugarTargetType {
     switch self {
     case .home:
       return .get("/home")
+      
+    case .goods:
+      return .get("/home/goods")
     }
   }
   
   var parameters: Parameters? {
-    nil
+    switch self {
+    case let .goods(lastId):
+      return ["lastId": lastId]
+      
+    default:
+      return nil
+    }
   }
   
   var headers: [String: String]? {
@@ -43,6 +53,9 @@ enum AblyAPI: SugarTargetType {
     switch self {
     case .home:
       return stub("HomeResponse")
+      
+    case .goods:
+      return stub("GoodsResponse")
     }
   }
 }
