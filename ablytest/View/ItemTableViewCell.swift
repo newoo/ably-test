@@ -26,7 +26,7 @@ class ItemTableViewCell: UITableViewCell {
   private let discountLabel: UILabel = {
     let label = UILabel()
     label.font = .boldSystemFont(ofSize: 18)
-    label.textColor = Color.discountRed
+    label.textColor = Color.AblyRed
     label.setContentHuggingPriority(.required, for: .horizontal)
     
     return label

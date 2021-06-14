@@ -46,13 +46,15 @@ class HomeViewController: UIViewController, View {
   }
   
   private func setNavigationBar() {
-    self.navigationItem.title = "홈"
+    navigationItem.title = "홈"
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = Color.navigationBarBackgroundColor
   }
   
   private func setConstraints() {
     addSubviews()
     tableView.snp.makeConstraints {
-      $0.top.equalTo(view.safeAreaLayoutGuide).inset(44)
+      $0.top.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
     }
   }
