@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController {
   }()
   
   let likedItemsViewController: UINavigationController = {
-    let viewController = LikedItemsViewController()
+    let viewController = LikedItemsViewController(reactor: LikedItemsViewReactor())
     let navigationViewController = UINavigationController(rootViewController: viewController)
     
     navigationViewController.tabBarItem
@@ -34,7 +34,7 @@ class TabBarViewController: UITabBarController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tabBar.tintColor = Color.AblyRed
+    tabBar.tintColor = Color.ablyRed
     tabBar.barTintColor = .white
     tabBar.isTranslucent = false
     viewControllers = [homeViewController, likedItemsViewController]

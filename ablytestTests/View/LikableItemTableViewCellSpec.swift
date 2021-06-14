@@ -1,5 +1,5 @@
 //
-//  ItemTableViewCellSpec.swift
+//  LikableItemTableViewCellSpec.swift
 //  ablytestTests
 //
 //  Created by Taeheon Woo on 2021/06/12.
@@ -9,10 +9,10 @@ import Quick
 import Nimble
 @testable import ablytest
 
-class ItemTableViewCellSpec: QuickSpec {
+class LikableItemTableViewCellSpec: QuickSpec {
   override func spec() {
-    describe("ItemTableViewCell") {
-      var itemTableViewCell: ItemTableViewCell!
+    describe("LikableItemTableViewCell") {
+      var itemTableViewCell: LikableItemTableViewCell!
       var imageView: UIImageView!
       var likeButton: LikeButton!
       var verticalStackView: UIStackView!
@@ -20,7 +20,7 @@ class ItemTableViewCellSpec: QuickSpec {
       var statusStackView: UIStackView!
       
       beforeEach {
-        itemTableViewCell = ItemTableViewCell()
+        itemTableViewCell = LikableItemTableViewCell()
         
         imageView = itemTableViewCell.contentView.subviews.compactMap { $0 as? UIImageView }.first!
         likeButton = itemTableViewCell.contentView.subviews.compactMap { $0 as? LikeButton }.first!

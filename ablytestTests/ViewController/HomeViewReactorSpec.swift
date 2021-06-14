@@ -23,15 +23,17 @@ class HomeViewReactorSpec: QuickSpec {
       }
       
       context("with enter action") {
-        it("reduce item list") {
+        beforeEach {
           homeViewReactor.action.onNext(.enter)
-          let obs = homeViewReactor.state.map { $0.items }.toBlocking()
-          let items = try? obs.first()
+        }
+        
+        it("reduce item list") {
+          let blocking = homeViewReactor.state.map { $0.items }.toBlocking()
+          let items = try? blocking.first()
           
           expect(items?.isEmpty).toEventuallyNot(beTrue(), timeout: .seconds(3))
         }
       }
     }
   }
-  
 }

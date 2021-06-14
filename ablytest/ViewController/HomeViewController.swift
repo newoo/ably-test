@@ -11,15 +11,15 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-class HomeViewController: UIViewController, View {
+class HomeViewController: ListViewController, View {
   typealias Reactor = HomeViewReactor
   
   private let tableView: UITableView = {
     let tableView = UITableView()
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 160
-    tableView.register(ItemTableViewCell.self,
-                       forCellReuseIdentifier: ItemTableViewCell.identifier)
+    tableView.register(LikableItemTableViewCell.self,
+                       forCellReuseIdentifier: LikableItemTableViewCell.identifier)
     
     return tableView
   }()
@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, View {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setNavigationBar()
+    setNavigationBarTitle("홈")
     setConstraints()
     reactor?.action.onNext(.enter)
   }
@@ -69,8 +69,8 @@ class HomeViewController: UIViewController, View {
       .do(onNext: { [weak self] _ in
         self?.stopPaging()
       }).bind(to: tableView.rx.items(
-        cellIdentifier: ItemTableViewCell.identifier,
-        cellType: ItemTableViewCell.self
+        cellIdentifier: LikableItemTableViewCell.identifier,
+        cellType: LikableItemTableViewCell.self
       )) { _, item, cell in
         cell.itemInput.onNext(item)
       }.disposed(by: disposeBag)
