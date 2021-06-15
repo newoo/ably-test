@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0D85289C7AEB499014DE3D46 /* Pods_ablytest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8585F8CF2B763B4663059811 /* Pods_ablytest.framework */; };
+		32059CB4267866AE00470C8B /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32059CB3267866AE00470C8B /* RealmService.swift */; };
+		32059CB626786A4A00470C8B /* ItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32059CB526786A4A00470C8B /* ItemObject.swift */; };
+		32059CBB2678796000470C8B /* ModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32059CBA2678796000470C8B /* ModelMapper.swift */; };
 		3209CD1B26744E29000FBF89 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD1A26744E29000FBF89 /* Item.swift */; };
 		3209CD1D267455B2000FBF89 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD1C267455B2000FBF89 /* Response.swift */; };
 		3209CD212674575C000FBF89 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD202674575C000FBF89 /* HomeViewReactor.swift */; };
@@ -26,7 +29,6 @@
 		3209CD4C267732BC000FBF89 /* LikedItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD4B267732BC000FBF89 /* LikedItemsViewController.swift */; };
 		3209CD4E26773505000FBF89 /* TabBarViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD4D26773505000FBF89 /* TabBarViewControllerSpec.swift */; };
 		3209CD5026773C93000FBF89 /* LikedItemsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD4F26773C93000FBF89 /* LikedItemsViewControllerSpec.swift */; };
-		3209CD5226773E4A000FBF89 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD5126773E4A000FBF89 /* ListViewController.swift */; };
 		3209CD562677411E000FBF89 /* LikedItemsViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD552677411E000FBF89 /* LikedItemsViewReactor.swift */; };
 		3209CD58267746D2000FBF89 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD57267746D2000FBF89 /* ItemTableViewCell.swift */; };
 		3209CD5B267782D7000FBF89 /* LikedItemsViewReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD5A267782D7000FBF89 /* LikedItemsViewReactorSpec.swift */; };
@@ -64,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		112FC6020F7FBF78B25865A1 /* Pods-ablytestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ablytestTests.release.xcconfig"; path = "Target Support Files/Pods-ablytestTests/Pods-ablytestTests.release.xcconfig"; sourceTree = "<group>"; };
+		32059CB3267866AE00470C8B /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		32059CB526786A4A00470C8B /* ItemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemObject.swift; sourceTree = "<group>"; };
+		32059CBA2678796000470C8B /* ModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMapper.swift; sourceTree = "<group>"; };
 		3209CD1A26744E29000FBF89 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3209CD1C267455B2000FBF89 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		3209CD202674575C000FBF89 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
@@ -82,7 +87,6 @@
 		3209CD4B267732BC000FBF89 /* LikedItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemsViewController.swift; sourceTree = "<group>"; };
 		3209CD4D26773505000FBF89 /* TabBarViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerSpec.swift; sourceTree = "<group>"; };
 		3209CD4F26773C93000FBF89 /* LikedItemsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemsViewControllerSpec.swift; sourceTree = "<group>"; };
-		3209CD5126773E4A000FBF89 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3209CD552677411E000FBF89 /* LikedItemsViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemsViewReactor.swift; sourceTree = "<group>"; };
 		3209CD57267746D2000FBF89 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		3209CD5A267782D7000FBF89 /* LikedItemsViewReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemsViewReactorSpec.swift; sourceTree = "<group>"; };
@@ -138,6 +142,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32059CB82678793E00470C8B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				32059CBA2678796000470C8B /* ModelMapper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		32059CB92678794300470C8B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				32059CB3267866AE00470C8B /* RealmService.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		3209CD322674A842000FBF89 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				3209CD4926772607000FBF89 /* TabBarViewController.swift */,
-				3209CD5126773E4A000FBF89 /* ListViewController.swift */,
 				32BF29B82674223500D08B3A /* HomeViewController.swift */,
 				3209CD202674575C000FBF89 /* HomeViewReactor.swift */,
 				3209CD4B267732BC000FBF89 /* LikedItemsViewController.swift */,
@@ -176,6 +195,7 @@
 			children = (
 				3209CD1A26744E29000FBF89 /* Item.swift */,
 				3209CD5F267789C6000FBF89 /* Banner.swift */,
+				32059CB526786A4A00470C8B /* ItemObject.swift */,
 				3209CD1C267455B2000FBF89 /* Response.swift */,
 			);
 			path = Model;
@@ -257,6 +277,8 @@
 		32BF29B32674223500D08B3A /* ablytest */ = {
 			isa = PBXGroup;
 			children = (
+				32059CB92678794300470C8B /* Database */,
+				32059CB82678793E00470C8B /* Util */,
 				3209CD3C2674AE96000FBF89 /* Resource */,
 				3209CD3B2674AE80000FBF89 /* Extension */,
 				3209CD3A2674AE66000FBF89 /* Network */,
@@ -529,6 +551,7 @@
 				3209CD562677411E000FBF89 /* LikedItemsViewReactor.swift in Sources */,
 				3209CD462675BCC8000FBF89 /* LikeButton.swift in Sources */,
 				321162B6267431440047256C /* LikableItemTableViewCell.swift in Sources */,
+				32059CB626786A4A00470C8B /* ItemObject.swift in Sources */,
 				3209CD29267470BF000FBF89 /* Networking.swift in Sources */,
 				3209CD3E2674B039000FBF89 /* Color.swift in Sources */,
 				32BF29B92674223500D08B3A /* HomeViewController.swift in Sources */,
@@ -542,8 +565,9 @@
 				3209CD2D267491EB000FBF89 /* UInt+Extension.swift in Sources */,
 				3209CD4A26772607000FBF89 /* TabBarViewController.swift in Sources */,
 				3209CD2B2674719C000FBF89 /* AblyAPI.swift in Sources */,
+				32059CB4267866AE00470C8B /* RealmService.swift in Sources */,
 				3209CD1D267455B2000FBF89 /* Response.swift in Sources */,
-				3209CD5226773E4A000FBF89 /* ListViewController.swift in Sources */,
+				32059CBB2678796000470C8B /* ModelMapper.swift in Sources */,
 				3209CD642677A43F000FBF89 /* BannerCollectionViewCell.swift in Sources */,
 				3209CD4C267732BC000FBF89 /* LikedItemsViewController.swift in Sources */,
 			);

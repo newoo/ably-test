@@ -31,12 +31,9 @@ final class LikedItemsViewReactor: Reactor {
     switch action {
     case .enter:
       let likeditems: [Item] = {
-        guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
-              let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
-          return []
-        }
-        
-        return likeditems
+        let itemObjects: [ItemObject] = RealmService.shared.fetch(object: ItemObject.self)
+        return itemObjects
+          .compactMap { Mapper.shared.convert(from: $0, to: Item.self) }
       }()
       
       return .concat([.just(.setLoading(true)),
@@ -53,7 +50,7 @@ final class LikedItemsViewReactor: Reactor {
       state.isLoading = isLoading
       
     case let .setLikedItems(items):
-      state.likedItems = state.likedItems + items
+      state.likedItems = items
     }
     
     return state

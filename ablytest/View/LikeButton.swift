@@ -17,8 +17,7 @@ class LikeButton: UIButton {
   }
   
   required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    setImage(UIImage(named: "like-unselected"), for: .normal)
+    fatalError("init(coder:) has not been implemented")
   }
   
   func setLike(to isLiked: Bool) {

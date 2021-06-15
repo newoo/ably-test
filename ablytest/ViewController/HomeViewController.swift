@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-class HomeViewController: ListViewController, View {
+class HomeViewController: UIViewController, View {
   typealias Reactor = HomeViewReactor
   
   private let collectionView: UICollectionView = {
@@ -83,12 +83,18 @@ class HomeViewController: ListViewController, View {
   // MARK: - Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    setNavigationBarTitle("홈")
+    setNavigationBar()
     setConstraints()
     reactor?.action.onNext(.enter)
   }
   
   // MARK: - Set layout
+  private func setNavigationBar() {
+    navigationItem.title = "홈"
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = Color.Background.navigationBar
+  }
+  
   private func setConstraints() {
     addSubviews()
     tableView.translatesAutoresizingMaskIntoConstraints = false

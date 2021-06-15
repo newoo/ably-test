@@ -10,10 +10,10 @@ target 'ablytest' do
   pod 'RxSwift', '~> 5.1.2'
   pod 'RxCocoa', '~> 5.1.1'
   pod 'ReactorKit', '~> 2.1.1'
-  pod 'Alamofire', '~> 5.4'
   pod 'Moya/RxSwift', '~> 14.0'
   pod 'MoyaSugar', '~> 1.3.3'
   pod 'SDWebImage', '~> 5.0'
+  pod 'RealmSwift', '~> 10.8' 
 
   target 'ablytestTests' do
     inherit! :search_paths

@@ -16,13 +16,29 @@ class LikableItemTableViewCell: ItemTableViewCell {
     likeButton = LikeButton()
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    contentView.addSubview(likeButton)
+    setConstraints()
+    bind()
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConstraints() {
+    addSubviews()
+    
     likeButton.snp.makeConstraints {
       $0.top.equalTo(thumbnailImageView.snp.top).offset(8)
       $0.trailing.equalTo(thumbnailImageView.snp.trailing).offset(-8)
       $0.width.height.equalTo(24)
     }
-    
+  }
+  
+  private func addSubviews() {
+    contentView.addSubview(likeButton)
+  }
+  
+  private func bind() {
     itemInput.compactMap { $0.isLiked }
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] in
@@ -33,44 +49,12 @@ class LikableItemTableViewCell: ItemTableViewCell {
     Observable.combineLatest(
       likeButton.rx.tap.asObservable(),
       itemInput,
-      resultSelector: {
-        return $1
-      }).subscribe(onNext: { [weak self] item in
-        var likedItems = self?.getLikedItems() ?? []
-        likedItems = self?.adjustLikedItems(likedItems, with: item) ?? []
-        self?.setLikedItems(likedItems)
-      }).disposed(by: disposeBag)
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  private func getLikedItems() -> [Item] {
-    guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
-       let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
-      return []
-    }
-     
-    return likeditems
-  }
-  
-  private func setLikedItems(_ items: [Item]) {
-    UserDefaults.standard.set(try? PropertyListEncoder().encode(items), forKey: "likes")
-    UserDefaults.standard.synchronize()
-  }
-  
-  private func adjustLikedItems(_ items: [Item], with item: Item) -> [Item] {
-    guard likeButton.isLiked else {
-      return items.filter { $0.id != item.id }
-    }
-    
-    var items = items
-    
-    if !(items.contains { $0.id == item.id }) {
-      items.append(item)
-    }
-    
-    return items
+      resultSelector: { $1 }
+    ).compactMap {
+      Mapper.shared.convert(from: $0, to: ItemObject.self)
+    }.subscribe(onNext: { itemObject in
+      RealmService.shared.handle(object: itemObject,
+                                 by: itemObject.id)
+    }).disposed(by: disposeBag)
   }
 }

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 
-class LikedItemsViewController: ListViewController, View {
+class LikedItemsViewController: UIViewController, View {
   typealias Reactor = LikedItemsViewReactor
   
   private let tableView: UITableView = {
@@ -23,8 +23,6 @@ class LikedItemsViewController: ListViewController, View {
 
     return tableView
   }()
-  
-  private var isPaging: Bool = false
   
   var disposeBag = DisposeBag()
   
@@ -38,11 +36,23 @@ class LikedItemsViewController: ListViewController, View {
     self.reactor = LikedItemsViewReactor()
   }
   
+  // MARK: - Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    setNavigationBarTitle("좋아요")
+    setNavigationBar()
     setConstraints()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     reactor?.action.onNext(.enter)
+  }
+  
+  // MARK: - Set layout
+  private func setNavigationBar() {
+    navigationItem.title = "좋아요"
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = Color.Background.navigationBar
   }
   
   private func setConstraints() {
@@ -57,6 +67,7 @@ class LikedItemsViewController: ListViewController, View {
     view.addSubview(tableView)
   }
   
+  // MARK: - Binding
   func bind(reactor: LikedItemsViewReactor) {
     reactor.state
       .map { $0.likedItems }

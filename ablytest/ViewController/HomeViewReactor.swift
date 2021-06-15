@@ -27,12 +27,10 @@ final class HomeViewReactor: Reactor {
     var banners = [Banner]()
     var items = [Item]()
     var likedItems : [UInt] = {
-      guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
-            let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
-        return []
-      }
-      
-      return likeditems.map { $0.id }
+      let itemObjects: [ItemObject] = RealmService.shared.fetch(object: ItemObject.self)
+      return itemObjects
+        .compactMap { Mapper.shared.convert(from: $0, to: Item.self) }
+        .map { $0.id }
     }()
   }
   
