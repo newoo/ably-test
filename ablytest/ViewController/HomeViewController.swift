@@ -63,6 +63,8 @@ class HomeViewController: ListViewController, View {
     return safeIndex
   }
   
+  private let refreshControl = UIRefreshControl()
+  
   private var isPaging: Bool = false
   
   var disposeBag = DisposeBag()
@@ -98,6 +100,8 @@ class HomeViewController: ListViewController, View {
   
   private func addSubviews() {
     view.addSubview(tableView)
+    
+    tableView.refreshControl = refreshControl
   }
   
   // MARK: - Binding
@@ -105,6 +109,7 @@ class HomeViewController: ListViewController, View {
     reactor.state
       .map { $0.items }
       .do(onNext: { [weak self] _ in
+        self?.refreshControl.endRefreshing()
         self?.itemListStopPaging()
       }).bind(to: tableView.rx.items(
         cellIdentifier: LikableItemTableViewCell.identifier,
@@ -118,6 +123,7 @@ class HomeViewController: ListViewController, View {
       .filter { !$0.isEmpty }
       .observeOn(MainScheduler.asyncInstance)
       .do(onNext: { [weak self] in
+        self?.tableView.tableHeaderView = nil
         self?.tableView.tableHeaderView
           = self?.createBannerHeaderView(with: $0)
       })
@@ -135,6 +141,12 @@ class HomeViewController: ListViewController, View {
     collectionView.rx.willEndDragging
       .bind(to: self.rx.bannerWillEndDragged)
       .disposed(by: disposeBag)
+    
+    refreshControl.rx.controlEvent(.valueChanged)
+      .delay(.seconds(1), scheduler: MainScheduler.instance)
+      .subscribe(onNext: { [weak self] in
+        self?.reactor?.action.onNext(.enter)
+      }).disposed(by: disposeBag)
   }
   
   // MARK: Create header & footer
@@ -150,6 +162,9 @@ class HomeViewController: ListViewController, View {
     collectionView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }
+    collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
+                                at: .centeredHorizontally,
+                                animated: false)
     
     headerView.addSubview(bannerCountLabel)
     bannerCountLabel.snp.makeConstraints {

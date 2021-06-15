@@ -23,6 +23,7 @@ final class HomeViewReactor: Reactor {
   
   struct State {
     var isLoading = false
+    var isRefreshing = false
     var banners = [Banner]()
     var items = [Item]()
     var likedItems : [UInt] = {
