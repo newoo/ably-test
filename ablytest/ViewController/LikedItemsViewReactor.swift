@@ -14,12 +14,10 @@ final class LikedItemsViewReactor: Reactor {
   }
   
   enum Mutation {
-    case setLoading(Bool)
     case setLikedItems([Item])
   }
   
   struct State {
-    var isLoading = false
     var likedItems = [Item]()
   }
   
@@ -36,9 +34,7 @@ final class LikedItemsViewReactor: Reactor {
           .compactMap { Mapper.shared.convert(from: $0, to: Item.self) }
       }()
       
-      return .concat([.just(.setLoading(true)),
-                      .just(.setLikedItems(likeditems)),
-                      .just(.setLoading(false))])
+      return .just(.setLikedItems(likeditems))
     }
   }
   
@@ -46,9 +42,6 @@ final class LikedItemsViewReactor: Reactor {
     var state = state
     
     switch mutation {
-    case let .setLoading(isLoading):
-      state.isLoading = isLoading
-      
     case let .setLikedItems(items):
       state.likedItems = items
     }

@@ -11,6 +11,7 @@ import ReactorKit
 final class HomeViewReactor: Reactor {
   enum Action {
     case enter
+    case refresh
     case loadMore
   }
   
@@ -23,7 +24,6 @@ final class HomeViewReactor: Reactor {
   
   struct State {
     var isLoading = false
-    var isRefreshing = false
     var banners = [Banner]()
     var items = [Item]()
     var likedItems : [UInt] = {
@@ -45,28 +45,36 @@ final class HomeViewReactor: Reactor {
   }
   
   func mutate(action: Action) -> Observable<Mutation> {
+    let homeRequest = networking.request(.home)
+    .asObservable()
+    .map { [weak self] response -> Response in
+      let items: [Item] = response.goods.map { item in
+        if self?.currentState.likedItems.contains(where: { $0 == item.id }) == true {
+          var item = item
+          item.setLike(to: true)
+          return item
+        }
+        
+        return item
+      }
+      
+      return Response(banners: response.banners, goods: items)
+    }
+    
     switch action {
     case .enter:
-      return networking.request(.home)
-        .asObservable()
-        .map { [weak self] response -> Response in
-          let items: [Item] = response.goods.map { item in
-            if self?.currentState.likedItems.contains(where: { $0 == item.id }) == true {
-              var item = item
-              item.setLike(to: true)
-              return item
-            }
-            
-            return item
-          }
-          
-          return Response(banners: response.banners, goods: items)
-        }.map { response -> [Mutation] in
-          [.setLoading(true),
-           .setBanners(response.banners ?? []),
-           .setItems(response.goods),
-           .setLoading(false)]
-        }.flatMap { Observable.from($0) }
+      return homeRequest.map { response -> [Mutation] in
+        [.setLoading(true),
+         .setBanners(response.banners ?? []),
+         .setItems(response.goods),
+         .setLoading(false)]
+      }.flatMap { Observable.from($0) }
+      
+    case .refresh:
+      return homeRequest.map { response -> [Mutation] in
+        [.setBanners(response.banners ?? []),
+         .setItems(response.goods)]
+      }.flatMap { Observable.from($0) }
       
     case .loadMore:
       let lastId = currentState.items.last?.id

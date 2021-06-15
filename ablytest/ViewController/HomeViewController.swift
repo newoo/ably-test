@@ -54,12 +54,22 @@ class HomeViewController: UIViewController, View {
     return label
   }()
   
+  let activityIndicator: UIActivityIndicatorView = {
+    let activityIndicator = UIActivityIndicatorView()
+    activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+    activityIndicator.hidesWhenStopped = false
+    activityIndicator.style = .white
+    
+    return activityIndicator
+  }()
+  
   fileprivate var bannerPosition: Int {
     let width = UIScreen.main.bounds.size.width
     let proportionalOffset = collectionView.contentOffset.x / width
     let index = Int(round(proportionalOffset))
     let numberOfItems = collectionView.numberOfItems(inSection: 0)
     let safeIndex = max(0, min(numberOfItems - 1, index))
+    
     return safeIndex
   }
   
@@ -97,11 +107,13 @@ class HomeViewController: UIViewController, View {
   
   private func setConstraints() {
     addSubviews()
-    tableView.translatesAutoresizingMaskIntoConstraints = false
+    
     tableView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
     }
+    
+    activityIndicator.center = view.center
   }
   
   private func addSubviews() {
@@ -112,6 +124,18 @@ class HomeViewController: UIViewController, View {
   
   // MARK: - Binding
   func bind(reactor: HomeViewReactor) {
+    reactor.state
+      .map { $0.isLoading }
+      .distinctUntilChanged()
+      .subscribe(onNext: { [weak self] isLoading in
+        if isLoading {
+          self?.activityIndicator.startAnimating()
+          return
+        }
+        
+        self?.activityIndicator.stopAnimating()
+      }).disposed(by: disposeBag)
+    
     reactor.state
       .map { $0.items }
       .do(onNext: { [weak self] _ in
@@ -151,7 +175,7 @@ class HomeViewController: UIViewController, View {
     refreshControl.rx.controlEvent(.valueChanged)
       .delay(.seconds(1), scheduler: MainScheduler.instance)
       .subscribe(onNext: { [weak self] in
-        self?.reactor?.action.onNext(.enter)
+        self?.reactor?.action.onNext(.refresh)
       }).disposed(by: disposeBag)
   }
   
@@ -168,9 +192,12 @@ class HomeViewController: UIViewController, View {
     collectionView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }
-    collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
-                                at: .centeredHorizontally,
-                                animated: false)
+    
+    if collectionView.numberOfItems(inSection: 0) > 0 {
+      collectionView.scrollToItem(at: IndexPath(item: 0, section: 0),
+                                  at: .centeredHorizontally,
+                                  animated: false)
+    }
     
     headerView.addSubview(bannerCountLabel)
     bannerCountLabel.snp.makeConstraints {
