@@ -31,6 +31,8 @@
 		3209CD58267746D2000FBF89 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD57267746D2000FBF89 /* ItemTableViewCell.swift */; };
 		3209CD5B267782D7000FBF89 /* LikedItemsViewReactorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD5A267782D7000FBF89 /* LikedItemsViewReactorSpec.swift */; };
 		3209CD5E2677846B000FBF89 /* ItemTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD5D2677846B000FBF89 /* ItemTableViewCellSpec.swift */; };
+		3209CD60267789C6000FBF89 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD5F267789C6000FBF89 /* Banner.swift */; };
+		3209CD642677A43F000FBF89 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3209CD632677A43F000FBF89 /* BannerCollectionViewCell.swift */; };
 		321162B6267431440047256C /* LikableItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B5267431440047256C /* LikableItemTableViewCell.swift */; };
 		321162B82674405C0047256C /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B72674405C0047256C /* HomeViewControllerSpec.swift */; };
 		321162BA267445050047256C /* LikableItemTableViewCellSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321162B9267445050047256C /* LikableItemTableViewCellSpec.swift */; };
@@ -85,6 +87,8 @@
 		3209CD57267746D2000FBF89 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		3209CD5A267782D7000FBF89 /* LikedItemsViewReactorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedItemsViewReactorSpec.swift; sourceTree = "<group>"; };
 		3209CD5D2677846B000FBF89 /* ItemTableViewCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCellSpec.swift; sourceTree = "<group>"; };
+		3209CD5F267789C6000FBF89 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		3209CD632677A43F000FBF89 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		321162B5267431440047256C /* LikableItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikableItemTableViewCell.swift; sourceTree = "<group>"; };
 		321162B72674405C0047256C /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
 		321162B9267445050047256C /* LikableItemTableViewCellSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikableItemTableViewCellSpec.swift; sourceTree = "<group>"; };
@@ -159,9 +163,10 @@
 		3209CD382674AE38000FBF89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3209CD452675BCC8000FBF89 /* LikeButton.swift */,
 				3209CD57267746D2000FBF89 /* ItemTableViewCell.swift */,
 				321162B5267431440047256C /* LikableItemTableViewCell.swift */,
-				3209CD452675BCC8000FBF89 /* LikeButton.swift */,
+				3209CD632677A43F000FBF89 /* BannerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				3209CD1A26744E29000FBF89 /* Item.swift */,
+				3209CD5F267789C6000FBF89 /* Banner.swift */,
 				3209CD1C267455B2000FBF89 /* Response.swift */,
 			);
 			path = Model;
@@ -253,9 +259,9 @@
 			children = (
 				3209CD3C2674AE96000FBF89 /* Resource */,
 				3209CD3B2674AE80000FBF89 /* Extension */,
-				3209CD382674AE38000FBF89 /* View */,
 				3209CD3A2674AE66000FBF89 /* Network */,
 				3209CD392674AE47000FBF89 /* Model */,
+				3209CD382674AE38000FBF89 /* View */,
 				3209CD372674AE1B000FBF89 /* ViewController */,
 				32BF29B42674223500D08B3A /* AppDelegate.swift */,
 				32BF29B62674223500D08B3A /* SceneDelegate.swift */,
@@ -532,11 +538,13 @@
 				3209CD212674575C000FBF89 /* HomeViewReactor.swift in Sources */,
 				3209CD58267746D2000FBF89 /* ItemTableViewCell.swift in Sources */,
 				3209CD1B26744E29000FBF89 /* Item.swift in Sources */,
+				3209CD60267789C6000FBF89 /* Banner.swift in Sources */,
 				3209CD2D267491EB000FBF89 /* UInt+Extension.swift in Sources */,
 				3209CD4A26772607000FBF89 /* TabBarViewController.swift in Sources */,
 				3209CD2B2674719C000FBF89 /* AblyAPI.swift in Sources */,
 				3209CD1D267455B2000FBF89 /* Response.swift in Sources */,
 				3209CD5226773E4A000FBF89 /* ListViewController.swift in Sources */,
+				3209CD642677A43F000FBF89 /* BannerCollectionViewCell.swift in Sources */,
 				3209CD4C267732BC000FBF89 /* LikedItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

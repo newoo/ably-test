@@ -19,6 +19,6 @@ class ListViewController: UIViewController {
   
   private func setNavigationBar() {
     navigationController?.navigationBar.isTranslucent = false
-    navigationController?.navigationBar.barTintColor = Color.navigationBarBackgroundColor
+    navigationController?.navigationBar.barTintColor = Color.Background.navigationBar
   }
 }

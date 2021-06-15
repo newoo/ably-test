@@ -8,11 +8,6 @@
 import UIKit
 
 struct Color {
-  static let navigationBarBackgroundColor = UIColor(red: CGFloat(248.0/255.0),
-                                                    green: CGFloat(248.0/255.0),
-                                                    blue: CGFloat(248.0/255.0),
-                                                    alpha: 0.82)
-  
   static let ablyRed = UIColor(red: CGFloat(255.0/255.0),
                                green: CGFloat(81.0/255.0),
                                blue: CGFloat(96.0/255.0),
@@ -27,4 +22,16 @@ struct Color {
                                 green: CGFloat(119.0/255.0),
                                 blue: CGFloat(119.0/255.0),
                                 alpha: 1.0)
+  
+  struct Background {
+    static let navigationBar = UIColor(red: CGFloat(248.0/255.0),
+                                       green: CGFloat(248.0/255.0),
+                                       blue: CGFloat(248.0/255.0),
+                                       alpha: 0.82)
+    
+    static let bannerCount = UIColor(red: CGFloat(0.0/255.0),
+                                     green: CGFloat(0.0/255.0),
+                                     blue: CGFloat(0.0/255.0),
+                                     alpha: 0.2)
+  }
 }

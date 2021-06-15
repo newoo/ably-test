@@ -33,9 +33,11 @@ class HomeViewControllerSpec: QuickSpec {
         }
         
         it("renders item list") {
-          let tableView = homeViewController.view.subviews.first { $0 is UITableView } as? UITableView
+          let tableView = homeViewController.view.subviews
+            .first { $0 is UITableView } as? UITableView
+          
           expect(tableView).notTo(beNil())
-          expect(tableView?.visibleCells.isEmpty == false).to(beTrue())
+          expect(tableView?.visibleCells.isEmpty).to(beFalse())
         }
       }
     }

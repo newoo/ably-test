@@ -16,12 +16,15 @@ final class HomeViewReactor: Reactor {
   
   enum Mutation {
     case setLoading(Bool)
+    case setBanners([Banner])
     case setItems([Item])
+    case appendItems([Item])
   }
   
   struct State {
-    var items = [Item]()
     var isLoading = false
+    var banners = [Banner]()
+    var items = [Item]()
     var likedItems : [UInt] = {
       guard let data = UserDefaults.standard.value(forKey: "likes") as? Data,
             let likeditems = try? PropertyListDecoder().decode([Item].self, from: data) else {
@@ -45,11 +48,10 @@ final class HomeViewReactor: Reactor {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .enter:
-      let setItems = networking.request(.home)
+      return networking.request(.home)
         .asObservable()
-        .map { $0.goods }
-        .map { [weak self] items in
-          return items.map { item in
+        .map { [weak self] response -> Response in
+          let items: [Item] = response.goods.map { item in
             if self?.currentState.likedItems.contains(where: { $0 == item.id }) == true {
               var item = item
               item.setLike(to: true)
@@ -58,22 +60,24 @@ final class HomeViewReactor: Reactor {
             
             return item
           }
-        }
-        .map { Mutation.setItems($0) }
-      
-      return .concat([.just(.setLoading(true)),
-                      setItems,
-                      .just(.setLoading(false))])
+          
+          return Response(banners: response.banners, goods: items)
+        }.map { response -> [Mutation] in
+          [.setLoading(true),
+           .setBanners(response.banners ?? []),
+           .setItems(response.goods),
+           .setLoading(false)]
+        }.flatMap { Observable.from($0) }
       
     case .loadMore:
       let lastId = currentState.items.last?.id
-      let setItems = networking.request(.goods(lastId))
+      let appendItems = networking.request(.goods(lastId))
         .asObservable()
         .map { $0.goods }
-        .map { Mutation.setItems($0) }
+        .map { Mutation.appendItems($0) }
       
       return .concat([.just(.setLoading(true)),
-                      setItems,
+                      appendItems,
                       .just(.setLoading(false))])
     }
   }
@@ -85,8 +89,14 @@ final class HomeViewReactor: Reactor {
     case let .setLoading(isLoading):
       state.isLoading = isLoading
       
+    case let .setBanners(banners):
+      state.banners = banners
+      
     case let .setItems(items):
-      state.items = state.items + items
+      state.items = items
+      
+    case let .appendItems(items):
+      state.items.append(contentsOf: items)
     }
     
     return state

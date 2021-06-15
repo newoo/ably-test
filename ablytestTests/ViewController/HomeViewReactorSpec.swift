@@ -28,10 +28,23 @@ class HomeViewReactorSpec: QuickSpec {
         }
         
         it("reduce item list") {
-          let blocking = homeViewReactor.state.map { $0.items }.toBlocking()
+          let blocking = homeViewReactor.state
+            .map { $0.items }
+            .toBlocking()
           let items = try? blocking.first()
           
-          expect(items?.isEmpty).toEventuallyNot(beTrue(), timeout: .seconds(3))
+          expect(items?.isEmpty).toEventuallyNot(beTrue(),
+                                                 timeout: .seconds(3))
+        }
+        
+        it("reduce banner") {
+          let blocking = homeViewReactor.state
+            .map { $0.banners }
+            .toBlocking()
+          let banners = try? blocking.first()
+          
+          expect(banners?.isEmpty).toEventuallyNot(beTrue(),
+                                                   timeout: .seconds(3))
         }
       }
     }
